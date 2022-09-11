@@ -1,9 +1,12 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_net_cloud_music/utils/log_utils.dart';
 
 class TimeCountDownWidget extends StatefulWidget {
-  const TimeCountDownWidget({Key? key}) : super(key: key);
+  final VoidCallback timeEndCallback;
+  const TimeCountDownWidget({Key? key, required this.timeEndCallback})
+      : super(key: key);
 
   @override
   State<TimeCountDownWidget> createState() => _TimeCountDownWidgetState();
@@ -21,39 +24,38 @@ class _TimeCountDownWidgetState extends State<TimeCountDownWidget> {
     timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       setState(() {
         count++;
-        if(count<=maxTime) {
+        if (count <= maxTime) {
           jumpContent = "${maxTime - count}s|跳过";
-        }else{
+        } else {
           timer.cancel();
+          widget.timeEndCallback.call();
         }
       });
-    }
-    );
+    });
   }
+
   @override
   void dispose() {
     timer.cancel();
     super.dispose();
+    LogUtils.e("TimeCountDownWidget dispose");
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration:  BoxDecoration(
-          borderRadius: BorderRadius.all(const Radius.circular(10)),
-          color: Colors.grey.withAlpha(100),
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.all(Radius.circular(10)),
+        color: Colors.grey.withAlpha(100),
       ),
       alignment: Alignment.center,
       width: 60,
       height: 30,
-      child:  Text(
-        jumpContent
-      ,
-      style: const TextStyle(
-      fontSize: 10,
-      color: Colors.white,
-      decoration: TextDecoration.none
+      child: Text(
+        jumpContent,
+        style: const TextStyle(
+            fontSize: 10, color: Colors.white, decoration: TextDecoration.none),
       ),
-    ),);
+    );
   }
 }

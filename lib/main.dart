@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_net_cloud_music/app.dart';
 import 'package:flutter_net_cloud_music/page/error_page.dart';
+import 'package:flutter_net_cloud_music/utils/log_utils.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,7 +14,6 @@ void main() {
     };
     runApp(const CloudMusicApp());
   }, (error, stack) {
-    print(error);
-    print(stack);
+    LogUtils.e("${error.toString()},$stack");
   });
 }

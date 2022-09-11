@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_net_cloud_music/page/discover/discover_page.dart';
+import 'package:flutter_net_cloud_music/page/event/event_page.dart';
+import 'package:flutter_net_cloud_music/page/my/my_page.dart';
 
 import '../utils/log_utils.dart';
 
@@ -14,13 +17,7 @@ class _MainPageContentWidgetState extends State<MainPageContentWidget> {
   final PageController _controller = PageController();
   final _defaultColor = Colors.grey;
   final _selectColor = Colors.blue;
-  final List<Widget> _pages = [
-    // HomePage(),
-    // ProjectPage(),
-    // OfficialAccountsPage(),
-    // SystemPage(),
-    // MinePage()
-  ];
+  final List<Widget> _pages = [DisCoverPage(), EventPage(), MyPage()];
   var _currentPageIndex = 0;
   @override
   Widget build(BuildContext context) {
@@ -46,11 +43,9 @@ class _MainPageContentWidgetState extends State<MainPageContentWidget> {
           LogUtils.e("点击了$index");
         },
         items: [
-          _bottomItem('首页', Icons.home),
-          _bottomItem('项目', Icons.menu),
-          _bottomItem('公众号', Icons.public),
-          _bottomItem('系统', Icons.settings),
-          _bottomItem('我的', Icons.people),
+          _bottomItem('发现', Icons.home),
+          _bottomItem('我的', Icons.menu),
+          _bottomItem('动态', Icons.public),
         ],
       ),
     );

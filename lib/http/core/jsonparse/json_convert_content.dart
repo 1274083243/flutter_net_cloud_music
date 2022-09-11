@@ -10,7 +10,7 @@ typedef JsonConvertFunction<T> = T Function(Map<String, dynamic> json);
 
 class JsonConvert {
   static final Map<String, JsonConvertFunction> _convertFuncMap = {
-    (HomeBannerEntity).toString(): HomeBannerEntity.fromJson,
+    // (HomeBannerEntity).toString(): HomeBannerEntity.fromJson,
   };
 
   T? convert<T>(dynamic value) {
@@ -86,12 +86,12 @@ class JsonConvert {
 
   //list is returned by type
   static M? _getListChildType<M>(List<Map<String, dynamic>> data) {
-    if (<HomeBannerEntity>[] is M) {
-      return data
-          .map<HomeBannerEntity>(
-              (Map<String, dynamic> e) => HomeBannerEntity.fromJson(e))
-          .toList() as M;
-    }
+    // if (<HomeBannerEntity>[] is M) {
+    //   return data
+    //       .map<HomeBannerEntity>(
+    //           (Map<String, dynamic> e) => HomeBannerEntity.fromJson(e))
+    //       .toList() as M;
+    // }
 
     debugPrint("${M.toString()} not found");
 
