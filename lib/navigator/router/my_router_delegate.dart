@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_net_cloud_music/navigator/router/router_const.dart';
 import 'package:flutter_net_cloud_music/navigator/router/router_info.dart';
-import 'package:flutter_net_cloud_music/page/splash/splash_page.dart';
+import 'package:flutter_net_cloud_music/page/test/test_page.dart';
 
 import '../../page/main_page.dart';
 import '../../page/un_known_page.dart';
@@ -10,7 +10,7 @@ import '../../utils/log_utils.dart';
 /// 路由代理对象
 class MyRouterDelegate extends RouterDelegate<RouterInfo>
     with ChangeNotifier, PopNavigatorRouterDelegateMixin {
-  List<Page> _pages = [MaterialPage(child: const SplashPage())];
+  List<Page> _pages = [MaterialPage(child: const TestPage())];
   final GlobalKey<NavigatorState> myKey = GlobalKey();
 
   @override
