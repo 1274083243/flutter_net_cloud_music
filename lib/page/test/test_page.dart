@@ -18,8 +18,8 @@ class _TestPageState extends State<TestPage> {
       child: Center(
         child: Container(
           color: Colors.red,
-          width: 60,
-          height: 60,
+          width: 20,
+          height: 20,
           child: LayoutBuilder(
             builder: (context, constrait) {
               LogUtils.e("constrait:$constrait", Tag: "ike");

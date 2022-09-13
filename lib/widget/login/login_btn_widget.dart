@@ -30,7 +30,6 @@ class _LoginBtnWidgetState extends State<LoginBtnWidget> {
         padding: EdgeInsets.only(top: 20),
         child: Container(
           alignment: Alignment.center,
-          width: 100,
           height: 40,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
@@ -41,9 +40,22 @@ class _LoginBtnWidgetState extends State<LoginBtnWidget> {
                   "登录",
                   style: TextStyle(color: Colors.white),
                 )
-              : const Text(
-                  "登录中...",
-                  style: TextStyle(color: Colors.white),
+              : Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    Text(
+                      "登录中...",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left: 10),
+                      child: SizedBox(
+                        width: 20,
+                        height: 20,
+                        child: CircularProgressIndicator(),
+                      ),
+                    ),
+                  ],
                 ),
         ),
       ),
